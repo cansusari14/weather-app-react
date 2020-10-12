@@ -1,0 +1,50 @@
+.weather-info .current-icon {
+  float: left;
+  font-size: small;
+  display: inline;
+  height: 60px;
+}
+.wind {
+  color: #fdc2b0;
+  font-weight: 700;
+  font-size: 16px;
+}
+.humidity {
+  color: #fdc2b0;
+  font-weight: 700;
+  font-size: 16px;
+}
+.col-4 {
+  float: right;
+  padding: left;
+  position: relative;
+  width: 40%;
+}
+.weather-info strong {
+  font-size: 64px;
+  font-weight: 500;
+  line-height: 1;
+  margin: 15px 0px;
+}
+.weather-info .units {
+  color: white;
+  font-size: 16px;
+  letter-spacing: 3px;
+  position: relative;
+  top: -32px;
+}
+.weather-info .active {
+  color: white;
+  cursor: default;
+}
+.weather-info .active:hover {
+  text-decoration: none;
+}
+.weather-details {
+  margin: 0px;
+  padding: 0px;
+}
+.detail-list {
+  list-style: none;
+  margin-bottom: 0;
+}

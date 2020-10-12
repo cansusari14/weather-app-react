@@ -1,0 +1,12 @@
+.WeatherApp {
+  background-color: #3e517a;
+  border-color: #fdc2b0;
+  border-radius: 10px;
+  color: white;
+  display: block;
+  font-family: "Poppins", sans-serif;
+  margin: 40px auto;
+  margin-bottom: 10px;
+  max-width: 450px;
+  padding: 30px;
+}
