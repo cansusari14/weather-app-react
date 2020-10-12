@@ -15,7 +15,7 @@ export default function WeatherApp() {
       <Forecast />
       </div>
        <small class="link">
-      <a href="https://github.com/cansusari14/Weather_App_She_Codes"
+      <a href="https://github.com/cansusari14/weather-app-react"
         >open-source code </a>
        by Cansu Sarikaya
     </small>
