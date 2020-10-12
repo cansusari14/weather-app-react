@@ -1,4 +1,4 @@
-.WeatherApp {
+.sections {
   background-color: #3e517a;
   border-color: #fdc2b0;
   border-radius: 10px;
@@ -9,4 +9,9 @@
   margin-bottom: 10px;
   max-width: 450px;
   padding: 30px;
+}
+.link {
+  margin: 0 auto;
+  max-width: 450px;
+  display: block;
 }
