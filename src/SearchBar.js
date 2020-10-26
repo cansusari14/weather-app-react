@@ -3,6 +3,7 @@ import "./SearchBar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
+import 'bootstrap/dist/css/bootstrap.css';
 
 export default function SearchBar() {
   return (
