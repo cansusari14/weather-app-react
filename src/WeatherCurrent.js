@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./WeatherCurrent.css";
 import axios from "axios";
-import SearchBar from "./SearchBar.js";
 
 export default function WeatherCurrent() {
   const [ready, setReady] = useState(false);

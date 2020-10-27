@@ -7,10 +7,19 @@ import "bootstrap/dist/css/bootstrap.css";
 import axios from "axios";
 
 export default function SearchBar() {
+  function handleSubmit(event) {
+    event.preventDefault();
+  }
+  function handleCityChange() {}
   return (
     <div className="search-bar">
-      <form className="search">
-        <input type="text" placeholder="Enter a city here" autoFocus="on" />
+      <form className="search" onSubmit={handleSubmit}>
+        <input
+          type="text"
+          placeholder="Enter a city here"
+          autoFocus="on"
+          onChange={handleCityChange}
+        />
         <button className="button">
           <FontAwesomeIcon icon={faSearch} />
         </button>
