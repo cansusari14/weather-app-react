@@ -10,7 +10,7 @@ export default function SearchBar() {
   function handleSubmit(event) {
     event.preventDefault();
   }
-  function handleCityChange() {}
+  function handleCityChange(props) {}
   return (
     <div className="search-bar">
       <form className="search" onSubmit={handleSubmit}>

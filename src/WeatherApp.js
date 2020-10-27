@@ -17,17 +17,11 @@ export default function WeatherApp(props) {
       humidity: response.data.main.humidity,
       description: response.data.weather[0].description,
       wind: response.data.wind.speed,
+      date: new Date(response.data.dt * 1000),
       city: response.data.name,
       iconUrl: "assets/03n.svg",
     });
     setReady(true);
-  }
-  function handleSubmit(event) {
-    event.preventDefault();
-  }
-  function handleCityChange(event) {
-    setCity(event.target.value);
-    alert(city);
   }
 
   if (ready) {
