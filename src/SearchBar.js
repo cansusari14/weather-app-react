@@ -6,14 +6,11 @@ import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 import "bootstrap/dist/css/bootstrap.css";
 import axios from "axios";
 
-export default function SearchBar() {
-  function handleSubmit(event) {
-    event.preventDefault();
-  }
+export default function SearchBar(props) {
   function handleCityChange(props) {}
   return (
     <div className="search-bar">
-      <form className="search" onSubmit={handleSubmit}>
+      <form className="search" onSubmit={props.onSearch}>
         <input
           type="text"
           placeholder="Enter a city here"

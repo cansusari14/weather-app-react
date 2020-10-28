@@ -23,12 +23,17 @@ export default function WeatherApp(props) {
     });
     setReady(true);
   }
+  function handleSearch(event) {
+    debugger
+    event.preventDefault();
+    setCity(event.target.value);
+  }
 
   if (ready) {
     return (
       <div className="WeatherApp">
         <div className="sections">
-          <SearchBar />
+          <SearchBar onSearch={handleSearch} />
           <CurrentInfo data={WeatherData} />
           <WeatherCurrent />
           <Forecast />
@@ -43,8 +48,7 @@ export default function WeatherApp(props) {
     );
   } else {
     let apiKey = "995d2282655743a8f4d6521ab4e2c0d9";
-    let city = "London";
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city},uk&appid=${apiKey}&units=metric`;
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
     axios.get(apiUrl).then(handleResponse);
 
     return "Loading...";
