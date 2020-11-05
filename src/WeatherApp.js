@@ -8,7 +8,7 @@ import axios from "axios";
 
 export default function WeatherApp(props) {
   const [ready, setReady] = useState(false);
-  const [WeatherData, setWeatherData] = useState({});
+  const [weatherData, setWeatherData] = useState(null);
   const [city, setCity] = useState(props.defaultCity);
   function handleResponse(response) {
     console.log(response.data);
@@ -23,19 +23,19 @@ export default function WeatherApp(props) {
     });
     setReady(true);
   }
-  function handleSearch(event) {
-    debugger
-    event.preventDefault();
-    setCity(event.target.value);
+
+  function handleSearch(city) {
+    setCity(city);
+    setReady(false);
   }
 
   if (ready) {
     return (
       <div className="WeatherApp">
         <div className="sections">
-          <SearchBar onSearch={handleSearch} />
-          <CurrentInfo data={WeatherData} />
-          <WeatherCurrent />
+          <SearchBar city={props.city} onSearch={handleSearch} />
+          <CurrentInfo data={weatherData} />
+          <WeatherCurrent data={weatherData} />
           <Forecast />
         </div>
         <small className="link">
