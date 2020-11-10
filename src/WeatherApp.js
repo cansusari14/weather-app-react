@@ -19,7 +19,7 @@ export default function WeatherApp(props) {
       wind: response.data.wind.speed,
       date: new Date(response.data.dt * 1000),
       city: response.data.name,
-      iconUrl: "assets/03n.svg",
+      iconUrl: `assets/${response.data.weather[0].icon}.svg`,
     });
     setReady(true);
   }
