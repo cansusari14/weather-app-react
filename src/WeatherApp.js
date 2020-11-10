@@ -19,6 +19,8 @@ export default function WeatherApp(props) {
       wind: response.data.wind.speed,
       date: new Date(response.data.dt * 1000),
       city: response.data.name,
+      lat: response.data.coord.lat,
+      lon: response.data.coord.lon,
       iconUrl: `assets/${response.data.weather[0].icon}.svg`,
     });
     setReady(true);
@@ -36,7 +38,7 @@ export default function WeatherApp(props) {
           <SearchBar city={props.city} onSearch={handleSearch} />
           <CurrentInfo data={weatherData} />
           <WeatherCurrent data={weatherData} />
-          <Forecast />
+          <Forecast lat={weatherData.lat} lon={weatherData.lon} />
         </div>
         <small className="link">
           <a href="https://github.com/cansusari14/weather-app-react">

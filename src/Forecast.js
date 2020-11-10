@@ -1,7 +1,77 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Forecast.css";
+import axios from "axios";
 
-export default function Forecast() {
+export default function Forecast(props) {
+  let date = new Date();
+  let daysShort = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  const [loaded, setLoaded] = useState(false);
+  const [forecast, setForecast] = useState(null);
+  function handleForecastResponse(response) {
+    setForecast(response.data);
+    setLoaded(true);
+    console.log(response.data);
+  }
+
+  if (loaded) {
+    return (
+      <div className="forecast">
+        <hr />
+        <div className="row weather-forecast">
+          <div className="col forecast">
+            <h6>{daysShort[new Date(forecast.daily[1].dt * 1000).getDay()]}</h6>
+            <img
+              src={`assets/${forecast.daily[1].weather[0].icon}.svg`}
+              alt="weather icon"
+              className="forecast-images"
+            />
+            <p>{Math.round(forecast.daily[1].temp.max)}°C</p>
+          </div>
+          <div className="col forecast">
+            <h6>{daysShort[new Date(forecast.daily[2].dt * 1000).getDay()]}</h6>
+            <img
+              src={`assets/${forecast.daily[2].weather[0].icon}.svg`}
+              alt="weather icon"
+              className="forecast-images"
+            />
+            <p>{Math.round(forecast.daily[2].temp.max)}°C</p>
+          </div>
+          <div className="col forecast">
+            <h6>{daysShort[new Date(forecast.daily[3].dt * 1000).getDay()]}</h6>
+            <img
+              src={`assets/${forecast.daily[3].weather[0].icon}.svg`}
+              alt="weather icon"
+              className="forecast-images"
+            />
+            <p>{Math.round(forecast.daily[3].temp.max)}°C</p>
+          </div>
+          <div className="col forecast">
+            <h6>{daysShort[new Date(forecast.daily[4].dt * 1000).getDay()]}</h6>
+            <img
+              src={`assets/${forecast.daily[4].weather[0].icon}.svg`}
+              alt="weather icon"
+              className="forecast-images"
+            />
+            <p>{Math.round(forecast.daily[4].temp.max)}°C</p>
+          </div>
+          <div className="col forecast">
+            <h6>{daysShort[new Date(forecast.daily[5].dt * 1000).getDay()]}</h6>
+            <img
+              src={`assets/${forecast.daily[5].weather[0].icon}.svg`}
+              alt="weather icon"
+              className="forecast-images"
+            />
+            <p>{Math.round(forecast.daily[5].temp.max)}°C</p>
+          </div>
+        </div>
+      </div>
+    );
+  } else {
+    let apiKey = "995d2282655743a8f4d6521ab4e2c0d9";
+    let url = `https://api.openweathermap.org/data/2.5/onecall?lat=${props.lat}&lon=${props.lon}&exclude=current,minutely,hourly&appid=${apiKey}&units=metric`;
+    axios.get(url).then(handleForecastResponse);
+  }
+
   return (
     <div className="forecast">
       <hr />
