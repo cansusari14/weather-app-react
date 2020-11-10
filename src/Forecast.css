@@ -3,6 +3,6 @@
   padding: 0px;
   text-align: center;
 }
-.forcast h6 {
+.col.forecast h6 {
   text-transform: uppercase;
 }

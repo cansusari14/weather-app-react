@@ -18,51 +18,17 @@ export default function Forecast(props) {
       <div className="forecast">
         <hr />
         <div className="row weather-forecast">
-          <div className="col forecast">
-            <h6>{daysShort[new Date(forecast.daily[1].dt * 1000).getDay()]}</h6>
-            <img
-              src={`assets/${forecast.daily[1].weather[0].icon}.svg`}
-              alt="weather icon"
-              className="forecast-images"
-            />
-            <p>{Math.round(forecast.daily[1].temp.max)}°C</p>
-          </div>
-          <div className="col forecast">
-            <h6>{daysShort[new Date(forecast.daily[2].dt * 1000).getDay()]}</h6>
-            <img
-              src={`assets/${forecast.daily[2].weather[0].icon}.svg`}
-              alt="weather icon"
-              className="forecast-images"
-            />
-            <p>{Math.round(forecast.daily[2].temp.max)}°C</p>
-          </div>
-          <div className="col forecast">
-            <h6>{daysShort[new Date(forecast.daily[3].dt * 1000).getDay()]}</h6>
-            <img
-              src={`assets/${forecast.daily[3].weather[0].icon}.svg`}
-              alt="weather icon"
-              className="forecast-images"
-            />
-            <p>{Math.round(forecast.daily[3].temp.max)}°C</p>
-          </div>
-          <div className="col forecast">
-            <h6>{daysShort[new Date(forecast.daily[4].dt * 1000).getDay()]}</h6>
-            <img
-              src={`assets/${forecast.daily[4].weather[0].icon}.svg`}
-              alt="weather icon"
-              className="forecast-images"
-            />
-            <p>{Math.round(forecast.daily[4].temp.max)}°C</p>
-          </div>
-          <div className="col forecast">
-            <h6>{daysShort[new Date(forecast.daily[5].dt * 1000).getDay()]}</h6>
-            <img
-              src={`assets/${forecast.daily[5].weather[0].icon}.svg`}
-              alt="weather icon"
-              className="forecast-images"
-            />
-            <p>{Math.round(forecast.daily[5].temp.max)}°C</p>
-          </div>
+          {forecast.daily.slice(1, 6).map((day, index) => (
+            <div key={index} className="col forecast">
+              <h6>{daysShort[new Date(day.dt * 1000).getDay()]}</h6>
+              <img
+                src={`assets/${day.weather[0].icon}.svg`}
+                alt="weather icon"
+                className="forecast-images"
+              />
+              <p>{Math.round(day.temp.max)}°C</p>
+            </div>
+          ))}
         </div>
       </div>
     );
