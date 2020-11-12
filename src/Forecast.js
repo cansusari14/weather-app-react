@@ -37,7 +37,6 @@ export default function Forecast(props) {
     let url = `https://api.openweathermap.org/data/2.5/onecall?lat=${props.lat}&lon=${props.lon}&exclude=current,minutely,hourly&appid=${apiKey}&units=metric`;
     axios.get(url).then(handleForecastResponse);
   }
-
   return (
     <div className="forecast">
       <hr />

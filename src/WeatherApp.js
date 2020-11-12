@@ -10,6 +10,7 @@ export default function WeatherApp(props) {
   const [ready, setReady] = useState(false);
   const [weatherData, setWeatherData] = useState(null);
   const [city, setCity] = useState(props.defaultCity);
+  const [location, setLocation] = useState(null);
   function handleResponse(response) {
     console.log(response.data);
     setWeatherData({
@@ -25,17 +26,29 @@ export default function WeatherApp(props) {
     });
     setReady(true);
   }
-
+  function handleLocation(lat, long) {
+    setLocation({ lat, long });
+    setReady(false);
+  }
   function handleSearch(city) {
+    setLocation(null);
     setCity(city);
     setReady(false);
+  }
+  function handleError() {
+    setCity(props.defaultCity);
+    alert("Ooops!Looks like there has been a mistake!");
   }
 
   if (ready) {
     return (
       <div className="WeatherApp">
         <div className="sections">
-          <SearchBar city={props.city} onSearch={handleSearch} />
+          <SearchBar
+            city={props.city}
+            onSearch={handleSearch}
+            onLocation={handleLocation}
+          />
           <CurrentInfo data={weatherData} />
           <WeatherCurrent data={weatherData} />
           <Forecast lat={weatherData.lat} lon={weatherData.lon} />
@@ -50,9 +63,14 @@ export default function WeatherApp(props) {
     );
   } else {
     let apiKey = "995d2282655743a8f4d6521ab4e2c0d9";
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-    axios.get(apiUrl).then(handleResponse);
+    if (location) {
+      let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${location.lat}&lon=${location.long}&appid=${apiKey}&units=metric`;
+      axios.get(apiUrl).then(handleResponse).catch(handleError);
+    } else {
+      let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+      axios.get(apiUrl).then(handleResponse).catch(handleError);
+    }
 
-    return "Loading...";
+    return " ";
   }
 }
