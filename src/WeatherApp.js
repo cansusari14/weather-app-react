@@ -38,7 +38,7 @@ export default function WeatherApp(props) {
     setReady(false);
   }
   function handleError() {
-    setError(`Ooops!Look like "${city}" is not a city !`);
+    setError(`Ooops! Look like "${city}" is not a city!`);
     setCity(props.defaultCity);
   }
 
