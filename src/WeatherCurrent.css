@@ -1,3 +1,10 @@
+.errorText {
+  display: block;
+  margin-top: 5px;
+  color: #fdc2b0;
+  letter-spacing: 0.5px;
+}
+
 .weather-info .current-icon {
   float: left;
   font-size: small;

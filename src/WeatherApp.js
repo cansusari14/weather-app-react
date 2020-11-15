@@ -11,8 +11,8 @@ export default function WeatherApp(props) {
   const [weatherData, setWeatherData] = useState(null);
   const [city, setCity] = useState(props.defaultCity);
   const [location, setLocation] = useState(null);
+  const [error, setError] = useState(null);
   function handleResponse(response) {
-    console.log(response.data);
     setWeatherData({
       temperature: response.data.main.temp,
       humidity: response.data.main.humidity,
@@ -29,15 +29,17 @@ export default function WeatherApp(props) {
   function handleLocation(lat, long) {
     setLocation({ lat, long });
     setReady(false);
+    setError(null);
   }
   function handleSearch(city) {
     setLocation(null);
     setCity(city);
+    setError(null);
     setReady(false);
   }
   function handleError() {
+    setError(`Ooops!Look like "${city}" is not a city !`);
     setCity(props.defaultCity);
-    alert("Ooops!Looks like there has been a mistake!");
   }
 
   if (ready) {
@@ -49,6 +51,7 @@ export default function WeatherApp(props) {
             onSearch={handleSearch}
             onLocation={handleLocation}
           />
+          <span className="errorText">{error}</span>
           <CurrentInfo data={weatherData} />
           <WeatherCurrent data={weatherData} />
           <Forecast lat={weatherData.lat} lon={weatherData.lon} />
@@ -71,6 +74,6 @@ export default function WeatherApp(props) {
       axios.get(apiUrl).then(handleResponse).catch(handleError);
     }
 
-    return " ";
+    return null;
   }
 }

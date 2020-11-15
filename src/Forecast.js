@@ -3,14 +3,12 @@ import "./Forecast.css";
 import axios from "axios";
 
 export default function Forecast(props) {
-  let date = new Date();
   let daysShort = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   const [loaded, setLoaded] = useState(false);
   const [forecast, setForecast] = useState(null);
   function handleForecastResponse(response) {
     setForecast(response.data);
     setLoaded(true);
-    console.log(response.data);
   }
 
   if (loaded) {
